@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Birthday Countdown Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            text-align: center;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 480px;
+            background: white;
+            border: 4px solid #ff6f91;
+            border-radius: 20px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff477e;
+        }
+
+        button {
+            background: #ff477e;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 25px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .box {
+            background: #fff0f5;
+            border: 2px dashed #ff6f91;
+            border-radius: 12px;
+            padding: 10px;
+            margin-top: 12px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>&#127874; My Birthday Countdown Checker</h1>
+        <button onclick="checkCountdown()">Check Countdown</button>
+        <div class="box">
+            <h3>Missing Details</h3>
+            <p id="missing">(Part 1 fills this)</p>
+        </div>
+        <div class="box">
+            <h3>Greeting</h3>
+            <p id="greeting">(Part 2 fills this)</p>
+        </div>
+        <div class="box">
+            <h3>Days Left</h3>
+            <p id="message">(Part 3 fills this)</p>
+        </div>
+        <div class="box">
+            <h3>Countdown</h3>
+            <p id="countdown">(Part 4 fills this)</p>
+        </div>
+    </div>
+    <script>
+        function checkCountdown() {
+            let friendName = "Zara";   // (given)
+            let daysLeft = 3;          // (given) try 0, 1 and 3
+
+            // ---------- PART 1: missing details ----------
+            let giftIdea = null;
+            let cakeFlavour;
+            document.getElementById("missing").innerHTML =
+                "Gift idea: " + giftIdea + "<br>Cake flavour: " + cakeFlavour;
+
+            // ---------- PART 2: greeting by time of day ----------
+            let hour = new Date().getHours();
+            let greeting = "";
+            if (hour < 12) {
+                greeting = "Good morning, " + friendName + "!";
+            } else if (hour < 17) {
+                greeting = "Good afternoon, " + friendName + "!";
+            } else {
+                greeting = "Good evening, " + friendName + "!";
+            }
+            document.getElementById("greeting").innerHTML = greeting;
+
+            // ---------- PART 3: the days-left message ----------
+            let message = "";
+            if (daysLeft == 0) {
+                message = "Today is the party!";
+            } else if (daysLeft == 1) {
+                message = "Tomorrow is the party!";
+            } else {
+                message = daysLeft + " days to go until the party!";
+            }
+            document.getElementById("message").innerHTML = message;
+
+            // ---------- PART 4: the countdown ----------
+            let countdownText = "";
+            let day = daysLeft;
+            while (day >= 1) {
+                countdownText = countdownText + "Days left: " + day + "<br>";
+                day--;
+            }
+            countdownText = countdownText + "Party time!";
+            document.getElementById("countdown").innerHTML = countdownText;
+        }
+    </script>
+</body>
+
+</html>
